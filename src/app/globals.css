@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+:root {
+  /* --- Light Mode (Aydınlık) --- */
+  --background: #FFFFFF;        /* Ana içerik arka planı */
+  --foreground: #1E1F22;        /* Yazı rengi */
+  --sidebar-bg: #F7F8FA;        /* Sol panel arka planı */
+  --border-color: #D1D5DA;      /* Çizgi rengi */
+}
+
+.dark {
+  /* --- Dark Mode (JetBrains Dark) --- */
+  --background: #1E1F22;        /* Ana içerik (Sağ taraf) - Daha koyu */
+  --foreground: #CED0D6;        /* Yazı rengi (Hafif kırık beyaz) */
+  --sidebar-bg: #2B2D30;        /* Sol panel ve Header - Bir tık açık koyu */
+  --border-color: #1E1F22;      /* Paneller arası çizgiler */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
