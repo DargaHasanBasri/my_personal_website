@@ -43,6 +43,7 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
       {/* Menü - Dinamik Yapı */}
       <nav className="flex flex-col gap-1">
         {renderMenuItem("about", "About Me")}
+        {renderMenuItem("education", "Education")}
         {renderMenuItem("experience", "Experience")}
         {renderMenuItem("projects", "Projects")}
         {renderMenuItem("contact", "Contact")}

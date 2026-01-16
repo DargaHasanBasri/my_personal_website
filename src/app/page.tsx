@@ -5,6 +5,7 @@ import { HomeLayout } from "@/features/home/components/layout/home-layout";
 import { Sidebar } from "@/features/home/components/sidebar/sidebar";
 import { Header } from "@/features/home/components/header/header";
 import { AboutView } from "@/features/about/components/about-view";
+import { EducationView } from "@/features/education/components/education-view";
 
 export default function Home() {
   // Flutter'daki: int _selectedIndex = 0;
@@ -28,6 +29,8 @@ export default function Home() {
           {/* Flutter'daki body: _pages[_selectedIndex] mantığı */}
           
           {activeTab === "about" && <AboutView />}
+
+          {activeTab === "education" && <EducationView />}
           
           {activeTab === "experience" && (
              <div className="flex h-full items-center justify-center text-gray-500">Experience Sayfası Yapılacak...</div>
