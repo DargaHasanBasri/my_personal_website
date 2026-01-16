@@ -1,4 +1,32 @@
-export function Sidebar() {
+import { Settings } from "lucide-react"; // İkonu import et
+
+// Sidebar'a dışarıdan gelecek verilerin tipini tanımlıyoruz (Flutter'daki final fields gibi)
+interface SidebarProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
+
+export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+  
+  // Tekrar eden buton kodunu fonksiyonlaştırdık (Widget Extraction)
+  const renderMenuItem = (id: string, label: string) => {
+    const isActive = activeTab === id;
+    
+    return (
+      <button
+        onClick={() => onTabChange(id)}
+        className={`text-left px-4 py-2 rounded text-sm font-medium transition-colors w-full
+          ${isActive 
+            ? "bg-[#3574F0] text-white shadow-md"  // Seçiliyse Mavi
+            : "text-gray-600 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-[#393B40]" // Değilse Gri
+          }
+        `}
+      >
+        {label}
+      </button>
+    );
+  };
+
   return (
     <div className="p-4 h-full flex flex-col gap-2">
       {/* Logo Alanı */}
@@ -12,40 +40,18 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Menü */}
+      {/* Menü - Dinamik Yapı */}
       <nav className="flex flex-col gap-1">
-        
-        {/* Aktif Olan Menü Elemanı (Mavi) */}
-        <button className="text-left px-4 py-2 rounded text-sm font-medium transition-colors
-          bg-[#3574F0] text-white shadow-md">
-          About Me
-        </button>
-
-        {/* Pasif Elemanlar */}
-        <button className="text-left px-4 py-2 rounded text-sm font-medium transition-colors
-          text-gray-600 hover:bg-gray-200 
-          dark:text-gray-300 dark:hover:bg-[#393B40]">
-          Experience
-        </button>
-        
-        <button className="text-left px-4 py-2 rounded text-sm font-medium transition-colors
-          text-gray-600 hover:bg-gray-200 
-          dark:text-gray-300 dark:hover:bg-[#393B40]">
-          Projects
-        </button>
-        
-        <button className="text-left px-4 py-2 rounded text-sm font-medium transition-colors
-          text-gray-600 hover:bg-gray-200 
-          dark:text-gray-300 dark:hover:bg-[#393B40]">
-          Contact
-        </button>
+        {renderMenuItem("about", "About Me")}
+        {renderMenuItem("experience", "Experience")}
+        {renderMenuItem("projects", "Projects")}
+        {renderMenuItem("contact", "Contact")}
       </nav>
       
-      {/* En alttaki Ayarlar İkonu (Opsiyonel) */}
+      {/* Ayarlar */}
       <div className="mt-auto px-4 py-2">
         <button className="text-gray-500 hover:text-gray-800 dark:hover:text-white transition-colors">
-           {/* İkon buraya */}
-           ⚙️
+           <Settings size={20} />
         </button>
       </div>
     </div>
