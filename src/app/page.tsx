@@ -7,6 +7,7 @@ import { Header } from "@/features/home/components/header/header";
 import { AboutView } from "@/features/about/components/about-view";
 import { EducationView } from "@/features/education/components/education-view";
 import { ExperienceView } from "@/features/experience/components/experience-view";
+import { ContactView } from "@/features/contact/components/contact-view";
 
 export default function Home() {
   // Flutter'daki: int _selectedIndex = 0;
@@ -39,9 +40,7 @@ export default function Home() {
              <div className="flex h-full items-center justify-center text-gray-500">Projeler Listesi Gelecek...</div>
           )}
           
-          {activeTab === "contact" && (
-             <div className="flex h-full items-center justify-center text-gray-500">İletişim Formu Gelecek...</div>
-          )}
+          {activeTab === "contact" && <ContactView />}
 
         </div>
         
